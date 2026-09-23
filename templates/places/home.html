@@ -1,0 +1,49 @@
+{% extends "places/base.html" %}
+
+{% block title %}Places — Главная{% endblock %}
+
+{% block content %}
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <span class="eyebrow">YOUR PERSONAL PLACES</span>
+
+        <h1>
+            Места, которые<br>
+            стоит запомнить.
+        </h1>
+
+        <p>
+            Сохраняй интересные места, находи их
+            и управляй своей личной коллекцией.
+        </p>
+
+        <div class="hero-actions">
+            <a href="{{ url_for('places_get') }}" class="button primary">
+                Посмотреть места
+            </a>
+
+            <a href="{{ url_for('places_new') }}" class="button secondary">
+                Добавить место
+            </a>
+        </div>
+
+    </div>
+
+    <div class="hero-card">
+        <div class="hero-card-icon">⌖</div>
+
+        <span>PLACES</span>
+
+        <strong>
+            Discover.<br>
+            Save.<br>
+            Remember.
+        </strong>
+    </div>
+
+</section>
+
+{% endblock %}

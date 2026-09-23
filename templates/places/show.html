@@ -1,0 +1,44 @@
+{% extends "places/base.html" %}
+
+{% block title %}{{ place.name }} — Places{% endblock %}
+
+{% block content %}
+
+<a href="{{ url_for('places_get') }}" class="back-link">
+    ← Все места
+</a>
+
+<section class="place-detail">
+
+    <span class="eyebrow">PLACE #{{ place.id }}</span>
+
+    <h1>{{ place.name }}</h1>
+
+    <div class="detail-address">
+        <span>⌖</span>
+        {{ place.address }}
+    </div>
+
+    <div class="detail-actions">
+
+        <a
+            href="{{ url_for('places_edit', id=place.id) }}"
+            class="button primary"
+        >
+            Редактировать
+        </a>
+
+        <form
+            action="{{ url_for('places_delete', id=place.id) }}"
+            method="post"
+        >
+            <button type="submit" class="button danger">
+                Удалить
+            </button>
+        </form>
+
+    </div>
+
+</section>
+
+{% endblock %}

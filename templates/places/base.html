@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}Places{% endblock %}</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}"
+    >
+</head>
+
+<body>
+
+<header class="header">
+    <div class="container header-inner">
+
+        <a href="{{ url_for('index') }}" class="logo">
+            Places<span>.</span>
+        </a>
+
+        <nav class="navigation">
+            <a href="{{ url_for('places_get') }}">Все места</a>
+            <a href="{{ url_for('places_new') }}" class="nav-button">
+                Добавить место
+            </a>
+        </nav>
+
+    </div>
+</header>
+
+
+<main class="container">
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="flash-container">
+                {% for category, message in messages %}
+                    <div class="flash {{ category }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    {% block content %}{% endblock %}
+
+</main>
+
+
+<footer class="footer">
+    <div class="container">
+        <p>Places · Flask pet-project</p>
+    </div>
+</footer>
+
+</body>
+</html>
